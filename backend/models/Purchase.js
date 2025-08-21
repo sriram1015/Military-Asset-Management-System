@@ -22,4 +22,4 @@ const purchase = new schema({
 }, { timestamps: true });
 
 const pur = mongoose.model('Purchase', purchase);
-module.export = pur;
+module.exports = pur;

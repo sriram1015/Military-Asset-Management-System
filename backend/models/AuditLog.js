@@ -1,5 +1,4 @@
-// models/AuditLog.js
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
 const AuditLogSchema = new mongoose.Schema(
   {
@@ -32,5 +31,5 @@ const AuditLogSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
-
-export default mongoose.model("AuditLog", AuditLogSchema);
+const audit = mongoose.model("AuditLog", AuditLogSchema);
+module.exports = audit;

@@ -12,4 +12,4 @@ const transfer = new schema({
 }, { timestamps: true } );
 
 const Tran = mongoose.model('Transfer',transfer);
-module.export=Tran;
+module.exports=Tran;

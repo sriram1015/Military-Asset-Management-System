@@ -11,8 +11,12 @@ connectDB();
 
 const auth = require('./Routes/authRoute');
 const asset = require('./Routes/assetRouter');
+const purchase = require('./Routes/purchaseRoutes');
+const transaction = require('./Routes/transferRoutes');
 app.use('/auth',auth);
 app.use('/asset',asset);
+app.use('/pur',purchase);
+app.use('/trans',transaction);
 app.listen(process.env.PORT || 5000, () => {
     console.log(`server is running on port ${process.env.PORT || 5000}`);
 })
