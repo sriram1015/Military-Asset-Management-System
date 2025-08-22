@@ -16,7 +16,8 @@ exports.createAsset = async (req, res) => {
 
 exports.getAssets = async (req, res) => {
     try {
-        const assets = await Asset.find();
+        const assets = await Asset.find().populate("base");
+        
         res.status(200).json({ status: 'ok', assets });
     } catch (err) {
         res.status(400).json({ status: 'error', message: err.message });

@@ -24,12 +24,8 @@ exports.createTransaction = async(req,res)=>{
 
 exports.getTransaction = async(req,res)=>{
     try {
-        const gettrans = await transcationService.getTrans();
-        res.status(200).json({
-            status:'ok',
-            gettrans,
-            message:'all Transaction'
-        })
+        const gettrans = await transcationService.getTransfers();
+        res.status(200).json(gettrans)
     } catch (error) {
         console.error(error);
         res.status(400).json({

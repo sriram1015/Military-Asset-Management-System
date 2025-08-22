@@ -21,10 +21,10 @@ class Purchase{
         return newPurchase.save();
     }
 
-    async getTrans(){
-        const purch = await purchaseModel.find().populate('asset base purchaseby');         
-        return purch;
-    }
+    async getPurchases() {
+  return await purchaseModel.find().populate("asset base purchaseby");
+}
+
 }
 
 module.exports= new Purchase();

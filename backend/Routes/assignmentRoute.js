@@ -1,8 +1,8 @@
 const express = require('express');
-const { createAssingment, getallassginment } = require('../Controller/assignmentController');
+const {  createAssignment, getAllAssignments } = require('../Controller/assignmentController');
 const Router = express.Router();
 
-Router.post('/create',createAssingment);
-Router.get('/all',getallassginment);
+Router.post('/create',createAssignment);
+Router.get('/all',getAllAssignments);
 
 module.exports = Router;

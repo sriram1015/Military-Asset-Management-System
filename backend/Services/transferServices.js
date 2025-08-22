@@ -28,9 +28,9 @@ class Transaction{
         return newTransaction.save();
     }
 
-    async getTrans(){
-        const trans = await transactionModel.find().populate("asset fromBase toBase tranferedBy");
-        return trans;
-    }
+    async getTransfers() {
+  return await transactionModel.find().populate("asset fromBase toBase tranferedBy");
+}
+
 }
 module.exports = new Transaction();

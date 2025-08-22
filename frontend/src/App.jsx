@@ -1,29 +1,38 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { AuthProvider } from "./context/AuthContext";
-import Navbar from "./components/Navbar";
-import ProtectedRoute from "./components/ProtectedRoute";
-import Login from "./pages/Login";
+import Sidebar from "./components/Sidebar";
 import Dashboard from "./pages/Dashboard";
 import Assets from "./pages/Assets";
 import Purchases from "./pages/Purchases";
 import Transfers from "./pages/Transfers";
 import Assignments from "./pages/Assignments";
+import Login from "./pages/Login";
+import { AuthProvider } from "./context/AuthContext";
+import ProtectedRoute from "./components/ProtectedRoute";
 
-function App() {
+export default function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
-          <Route path="/assets" element={<ProtectedRoute><Assets /></ProtectedRoute>} />
-          <Route path="/purchases" element={<ProtectedRoute roles={["Admin", "LogisticsOfficer"]}><Purchases /></ProtectedRoute>} />
-          <Route path="/transfers" element={<ProtectedRoute roles={["Admin", "LogisticsOfficer"]}><Transfers /></ProtectedRoute>} />
-          <Route path="/assignments" element={<ProtectedRoute roles={["Admin", "BaseCommander"]}><Assignments /></ProtectedRoute>} />
-        </Routes>
+        <div className="flex">
+          <Sidebar />
+          <main className="flex-1 bg-gray-50 min-h-screen">
+            <Routes>
+              <Route path="/login" element={<Login />} />
+              <Route path="/" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+              <Route path="/assets" element={<ProtectedRoute roles={["Admin","LogisticsOfficer"]} ><Assets /></ProtectedRoute>} />
+              <Route path="/purchases" element={
+                <ProtectedRoute roles={["Admin","LogisticsOfficer"]}><Purchases /></ProtectedRoute>
+              } />
+              <Route path="/transfers" element={
+                <ProtectedRoute roles={["Admin","LogisticsOfficer"]}><Transfers /></ProtectedRoute>
+              } />
+              <Route path="/assignments" element={
+                <ProtectedRoute roles={["Admin","BaseCommander"]}><Assignments /></ProtectedRoute>
+              } />
+            </Routes>
+          </main>
+        </div>
       </BrowserRouter>
     </AuthProvider>
   );
 }
-export default App;

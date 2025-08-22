@@ -27,7 +27,7 @@ exports.createPurchase = async (req,res)=>{
 
 exports.getPursh = async(req,res)=>{
     try {
-        const pur = await purchasedService.getTrans();
+        const pur = await purchasedService.getPurchases();
         res.status(200).json({
             status:'ok',
             pur,
