@@ -21,3 +21,21 @@ exports.createTransaction = async(req,res)=>{
         });
     }
 }
+
+exports.getTransaction = async(req,res)=>{
+    try {
+        const gettrans = await transcationService.getTrans();
+        res.status(200).json({
+            status:'ok',
+            gettrans,
+            message:'all Transaction'
+        })
+    } catch (error) {
+        console.error(error);
+        res.status(400).json({
+            status:'error',
+            message:error
+        })
+    }
+
+}

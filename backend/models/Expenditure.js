@@ -1,11 +1,10 @@
-
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const ExpenditureSchema = new mongoose.Schema(
   {
     asset: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Asset",
+      ref: "assets", // Use singular, matching your Asset model
       required: true,
     },
     base: {
@@ -24,4 +23,5 @@ const ExpenditureSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export default mongoose.model("Expenditure", ExpenditureSchema);
+const Expenditure = mongoose.model('Expenditure', ExpenditureSchema);
+module.exports = Expenditure;

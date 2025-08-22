@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const schema = mongoose.Schema;
 
 const transfer = new schema({
-    asset:{ type:mongoose.Schema.Types.ObjectId,ref:'Asset',required:true},
+    asset:{ type:mongoose.Schema.Types.ObjectId,ref:'assets',required:true},
     fromBase:{ type:schema.Types.ObjectId, ref:'Base',required:true},
     toBase:{type:schema.Types.ObjectId, ref:'Base',required:true},
     quantity:{ type:Number,required:true},

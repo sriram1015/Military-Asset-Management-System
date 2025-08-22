@@ -13,16 +13,17 @@ class Purchase{
         const Asset = await assetModel.findOne({name:asset});
         if(!Asset) throw new Error('Asset not found');
         const newPurchase = new purchaseModel({
-            asset:Asset._id,
-            base:baseDoc._id,
+            asset: Asset._id,
+            base: baseDoc._id,
             quantity,
-            purchasedby:user._id,
+            purchaseby: user._id, // <-- match schema
         });
-        
-
-
-
         return newPurchase.save();
+    }
+
+    async getTrans(){
+        const purch = await purchaseModel.find().populate('asset base purchaseby');         
+        return purch;
     }
 }
 

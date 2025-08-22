@@ -3,7 +3,7 @@ const schema = mongoose.Schema;
 const purchase = new schema({
     asset: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Asset',
+        ref: 'assets',
         required: true
     },
     base: {
@@ -14,9 +14,9 @@ const purchase = new schema({
     quantity: { type: Number, required: true },
     date: { type: Date, default: Date.now },
     purchaseby: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
-    },
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+},
 
 
 }, { timestamps: true });

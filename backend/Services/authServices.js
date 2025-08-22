@@ -20,11 +20,10 @@ class AuthServices{
         const saveuser = await newUser.save();
         return saveuser;
     }
-    async login(email,password){
-      const user = await userModel.findOne({email});  
+    async login(user_name,password){
+      const user = await userModel.findOne({user_name});  
       if(!user){
         throw new Error("User Not Found");
-        console.log("User Not Found");
       }
       const isMatch = await bcrypt.compare(password,user.password);
       if(!isMatch){

@@ -24,3 +24,20 @@ exports.createPurchase = async (req,res)=>{
         });
     }
 }
+
+exports.getPursh = async(req,res)=>{
+    try {
+        const pur = await purchasedService.getTrans();
+        res.status(200).json({
+            status:'ok',
+            pur,
+            message:'all purchases'
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(400).json({
+            status:'error',
+            message:error
+        })
+    }
+}

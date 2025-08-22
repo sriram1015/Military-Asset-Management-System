@@ -13,5 +13,8 @@ class Audit{
         }).save();
 
     }
+    async getallAudit(){
+        return auditModel.find().populate("userId", "name email role");
+    }
 }
 module.exports = new Audit();
