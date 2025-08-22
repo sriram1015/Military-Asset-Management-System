@@ -4,7 +4,7 @@ const cors = require('cors');
 
 const app = express();
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: "military-asset-management-system-weld.vercel.app",
   credentials: true
 }));
 
